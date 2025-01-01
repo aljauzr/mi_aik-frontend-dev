@@ -10,7 +10,7 @@
   <!-- NAVBAR -->
   <?php include 'inc/navbar.php'; ?>
   <!-- END OF NAVBAR -->
-  <section class="section-18" style="padding-top: 10px;">
+  <section class="section-18" style="padding-top: 60px;">
     <h1 class="heading-21">Fasilitas Sekolah</h1>
     <div class="w-layout-blockcontainer container w-container">
         <div id="fasilitas-container" class="w-layout-grid grid-13">
