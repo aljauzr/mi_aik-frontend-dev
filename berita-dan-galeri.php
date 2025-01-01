@@ -36,10 +36,12 @@
       </div>
     </div>
     <div class="w-layout-blockcontainer container container-berita w-container">
-      <h2 class="heading-14">BERITA LAIN</h2>
-      <div class="w-layout-grid grid-10" id="berita-lain-container">
-        <!-- Untuk berita lain -->
-      </div> 
+      <h2 class="heading-14" >BERITA LAIN</h2>
+      <div class="w-layout-blockcontainer container-13 w-container">
+        <div class="w-layout-grid grid-12" id="prestasi-container">
+          <!-- Konten berita lain akan dimuat di sini secara dinamis -->
+        </div>
+      </div>
     </div>
   </section>
   <section>
@@ -56,6 +58,7 @@
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6755708a178398bec1ab8ede" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <script src="js/config.js" type="text/javascript"></script>
+  <!-- SCRIPT TO FETCH THE NEWEST 3 BERITA -->
   <script>
     // Fungsi untuk mengambil data dari API
     fetch(backend_url + 'berita-galeri')
@@ -103,48 +106,121 @@
           // Menambahkan beritaDiv ke dalam container berita terbaru
           beritaContainer.appendChild(beritaDiv);
         });
-
-        // Mengambil sisa berita untuk "Berita Lain"
-        const beritaLain = sortedData.slice(3); // Semua item setelah 3 berita terbaru
-
-        // Menampilkan berita lain
-        beritaLain.forEach(item => {
-          const linkBlock = document.createElement('a');
-          linkBlock.href = 'view_berita?id=' + item.id;
-          linkBlock.classList.add('link-block', 'w-inline-block');
-
-          // Membuat elemen gambar untuk berita lain dengan ukuran default
-          const imgElement = document.createElement('img');
-          imgElement.src = item.gambar ? backend_url + item.gambar : backend_url + 'images/defaultBerita.jpg';
-          imgElement.loading = 'lazy';
-          imgElement.width = 163; // Ukuran default
-          imgElement.alt = '';
-          imgElement.sizes = '(max-width: 479px) 100vw, 163px';
-          imgElement.classList.add('image-12');
-
-          // Membuat elemen text
-          const flexBlock = document.createElement('div');
-          flexBlock.classList.add('w-layout-vflex', 'flex-block-4');
-
-          const textBlock = document.createElement('div');
-          textBlock.classList.add('text-block-20');
-          textBlock.textContent = item.nama;
-
-          const tombol = document.createElement('div');
-          tombol.classList.add('text-block-20', 'tombol');
-          tombol.textContent = 'Selengkapnya';
-
-          // Menyusun elemen ke dalam linkBlock
-          flexBlock.appendChild(textBlock);
-          flexBlock.appendChild(tombol);
-          linkBlock.appendChild(imgElement);
-          linkBlock.appendChild(flexBlock);
-
-          // Menambahkan linkBlock ke dalam container berita lain
-          beritaLainContainer.appendChild(linkBlock);
-        });
       })
       .catch(error => console.error('Error fetching berita:', error));
+  </script>
+  <!-- SCRIPT TO FETCH THE REMAINING OF BERITA -->
+  <script>
+    // Fungsi untuk memuat data dari backend dan menampilkannya secara dinamis
+    async function loadBeritaLain() {
+      try {
+        const response = await fetch(backend_url + 'berita-galeri');
+        const data = await response.json();
+
+        // Urutkan data berdasarkan id terbesar
+        data.sort((a, b) => b.id - a.id);
+
+        const prestasiContainer = document.getElementById('prestasi-container');
+        prestasiContainer.innerHTML = ''; // Kosongkan container
+
+        const startIndex = 3; // Mulai dari index ke-4
+        const endIndex = startIndex + 5; // Ambil 5 item setelah index ke-4
+        const truncatedData = data.slice(startIndex, endIndex); // Ambil item dari index ke-4 hingga index ke-9
+
+        // Render data yang dibatasi
+        truncatedData.forEach(beritaLain => {
+          // Batasi nama berita lain hingga 36 karakter
+          const namaBeritaLain = beritaLain.nama.length > 36 
+            ? beritaLain.nama.substring(0, 36) + "..." 
+            : beritaLain.nama;
+          // Batasi keterangan hingga 170 karakter
+          const keteranganBeritaLain = beritaLain.keterangan.length > 170 
+            ? beritaLain.keterangan.substring(0, 170) + "..."
+            : beritaLain.keterangan;
+
+          const beritaLainItem = `
+            <div class="w-layout-hflex">
+              <img src="${beritaLain.gambar ? `${backend_url}${beritaLain.gambar}` : `${backend_url}images/defaultBerita.jpg`}" 
+                   loading="lazy" 
+                   alt="${beritaLain.nama}" 
+                   class="foto-prestasi" 
+                   style="aspect-ratio: 1/1; width: 161.38px; height: 161.38px;">
+              <div class="w-layout-vflex flex-block-5">
+                <div class="text-block-24">${namaBeritaLain}</div>
+                <div class="text-block-25">${keteranganBeritaLain}</div>
+                <a href="view_berita?id=${beritaLain.id}" class="button-6 w-button">Selengkapnya</a>
+              </div>
+            </div>
+          `;
+          prestasiContainer.innerHTML += beritaLainItem;
+        });
+
+        // Tambahkan tombol "Berita lainnya..." jika ada lebih dari 9 item
+        if (data.length > endIndex) {
+          const moreButtonContainer = document.createElement('div');
+          moreButtonContainer.className = 'w-layout-blockcontainer container-16 w-container';
+
+          const moreButtonFlex = document.createElement('div');
+          moreButtonFlex.className = 'w-layout-hflex flex-block-6';
+
+          const moreTextButton = document.createElement('a');
+          moreTextButton.textContent = 'Berita lainnya...';
+          moreTextButton.className = 'button-9 w-button';
+          moreTextButton.href = '#';
+          moreTextButton.target = '_blank'; // Tambahkan atribut target="_blank" agar ketika ditekan membuat tab baru
+          moreTextButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            showAllBerita(data);
+          });
+
+          // Susun elemen sesuai struktur
+          moreButtonFlex.appendChild(moreTextButton);
+          moreButtonContainer.appendChild(moreButtonFlex);
+          prestasiContainer.appendChild(moreButtonContainer);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    // Fungsi untuk menampilkan semua data mulai dari indeks ke-4
+    function showAllBerita(data) {
+      const prestasiContainer = document.getElementById('prestasi-container');
+      prestasiContainer.innerHTML = ''; // Kosongkan container
+
+      const startIndex = 3; // Mulai dari index ke-4
+      const truncatedData = data.slice(startIndex); // Ambil semua data mulai dari index ke-4
+
+      truncatedData.forEach(beritaLain => {
+        // Batasi nama beritaLain hingga 36 karakter
+        const namaBeritaLain = beritaLain.nama.length > 36 
+            ? beritaLain.nama.substring(0, 36) + "..." 
+            : beritaLain.nama;
+        // Batasi keterangan hingga 170 karakter
+        const keteranganBeritaLain = beritaLain.keterangan.length > 170 
+            ? beritaLain.keterangan.substring(0, 170) + "..."
+            : beritaLain.keterangan;
+
+        const beritaLainItem = `
+          <div class="w-layout-hflex">
+            <img src="${beritaLain.gambar ? `${backend_url}${beritaLain.gambar}` : `${backend_url}images/defaultBerita.jpg`}" 
+                 loading="lazy" 
+                 alt="${beritaLain.nama}" 
+                 class="foto-prestasi" 
+                 style="aspect-ratio: 1/1; width: 161.38px; height: 161.38px;">
+            <div class="w-layout-vflex flex-block-5">
+              <div class="text-block-24">${namaBeritaLain}</div>
+              <div class="text-block-25">${keteranganBeritaLain}</div>
+              <a href="view_berita?id=${beritaLain.id}" class="button-6 w-button">Selengkapnya</a>
+            </div>
+          </div>
+        `;
+        prestasiContainer.innerHTML += beritaLainItem;
+      });
+    }
+
+    // Panggil fungsi loadBeritaLain saat halaman selesai dimuat
+    document.addEventListener('DOMContentLoaded', loadBeritaLain);
   </script>
 </body>
 </html>

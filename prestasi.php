@@ -10,7 +10,7 @@
   <!-- NAVBAR -->
   <?php include 'inc/navbar.php'; ?>
   <!-- END OF NAVBAR -->
-  <section style="margin-top: 100px;">
+  <section style="padding-top: 60px;">
     <h1 class="heading-18">Prestasi</h1>
     <div class="w-layout-blockcontainer container-13 w-container">
       <div class="w-layout-grid grid-12" id="prestasi-container">
@@ -71,7 +71,7 @@
           prestasiContainer.innerHTML += prestasiItem;
         });
 
-        // Tambahkan tombol "Lainnya" jika ada lebih dari 5 item
+        // Tambahkan tombol "Prestasi lainnya..." jika ada lebih dari 5 item
         if (data.length > maxItems) {
           const moreButtonContainer = document.createElement('div');
           moreButtonContainer.className = 'w-layout-blockcontainer container-16 w-container';
