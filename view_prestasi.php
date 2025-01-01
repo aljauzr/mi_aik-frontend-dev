@@ -58,7 +58,10 @@ if (!$data) {
       const gambarElement = document.getElementById('prestasi-gambar');
       
       // Mengubah gambar dengan menggunakan backend_url dan data yang dikirimkan oleh PHP
-      gambarElement.src = backend_url + '<?php echo htmlspecialchars($data['gambar']); ?>';
+      const gambarSrc = '<?php echo htmlspecialchars($data['gambar']); ?>';
+      gambarElement.src = gambarSrc && gambarSrc !== 'null' 
+          ? backend_url + gambarSrc 
+          : backend_url + 'images/defaultPrestasi.jpg';
       
       const apiUrl = backend_url + '<?php echo $api_url; ?>';
       console.log(apiUrl);

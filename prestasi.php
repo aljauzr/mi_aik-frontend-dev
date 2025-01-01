@@ -116,7 +116,7 @@
 
         const prestasiItem = `
           <div class="w-layout-hflex">
-            <img src="${prestasi.gambar ? `${backend_url}${prestasi.gambar}` : `${backend_url}images/default.jpg`}" 
+            <img src="${prestasi.gambar ? `${backend_url}${prestasi.gambar}` : `${backend_url}images/defaultPrestasi.jpg`}" 
                  loading="lazy" 
                  alt="${prestasi.nama}" 
                  class="foto-prestasi" 
