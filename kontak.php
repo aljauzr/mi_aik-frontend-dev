@@ -39,7 +39,7 @@
           </div>
           <div id="w-node-_2b46301c-ebb4-cb4f-fa43-df2df10d56f6-c1ab8f08" class="w-form">
             <center>
-              <img src="images/Icon-1-1.png" loading="lazy" width="300" id="w-node-c65386d2-1820-5e59-acae-5146469a85d4-c1ab8edd" alt=""/>
+              <img src="images/leave_message.png" loading="lazy" width="300" id="w-node-c65386d2-1820-5e59-acae-5146469a85d4-c1ab8edd" alt=""/>
             </center>
           </div>
         </div>
