@@ -28,7 +28,7 @@ if (!$data) {
   <!-- NAVBAR -->
   <?php include 'inc/navbar.php'; ?>
   <!-- END OF NAVBAR -->
-  <section class="section-15" style="padding-top: 100px;">
+  <section class="section-15" style="padding-top: 60px;">
     <div class="w-layout-blockcontainer container w-container">
       <a href="berita-dan-galeri.php" class="link-block-2 w-inline-block">
         <img src="images/Back_1Back.png" loading="lazy" alt="" width="30">
