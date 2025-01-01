@@ -91,7 +91,7 @@
 
           // Membuat tombol "Selengkapnya"
           const button = document.createElement('a');
-          button.href = 'view_berita.php?id=' + item.id;
+          button.href = 'view_berita?id=' + item.id;
           button.classList.add('button-5', 'w-button');
           button.textContent = 'Selengkapnya';
 
@@ -110,7 +110,7 @@
         // Menampilkan berita lain
         beritaLain.forEach(item => {
           const linkBlock = document.createElement('a');
-          linkBlock.href = 'view_berita.php?id=' + item.id;
+          linkBlock.href = 'view_berita?id=' + item.id;
           linkBlock.classList.add('link-block', 'w-inline-block');
 
           // Membuat elemen gambar untuk berita lain dengan ukuran default

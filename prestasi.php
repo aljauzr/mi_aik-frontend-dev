@@ -64,7 +64,7 @@
               <div class="w-layout-vflex flex-block-5">
                 <div class="text-block-24">${namaPrestasi}</div>
                 <div class="text-block-25">${keteranganPrestasi}</div>
-                <a href="view_prestasi.php?id=${prestasi.id}" class="button-6 w-button">Selengkapnya</a>
+                <a href="view_prestasi?id=${prestasi.id}" class="button-6 w-button">Selengkapnya</a>
               </div>
             </div>
           `;
@@ -124,7 +124,7 @@
             <div class="w-layout-vflex flex-block-5">
               <div class="text-block-24">${namaPrestasi}</div>
               <div class="text-block-25">${keteranganPrestasi}</div>
-              <a href="view_prestasi.php?id=${prestasi.id}" class="button-6 w-button">Selengkapnya</a>
+              <a href="view_prestasi?id=${prestasi.id}" class="button-6 w-button">Selengkapnya</a>
             </div>
           </div>
         `;

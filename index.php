@@ -24,7 +24,7 @@
         <ul id="prestasi-list" role="list" class="list w-list-unstyled">
           <!-- Item Prestasi akan dimasukkan secara dinamis di sini -->
         </ul>
-        <a id="w-node-ea4385d1-5921-da8f-535e-751957841faa-c1ab8edd" href="prestasi.php" class="button-2 w-button">Selengkapnya</a>
+        <a id="w-node-ea4385d1-5921-da8f-535e-751957841faa-c1ab8edd" href="prestasi" class="button-2 w-button">Selengkapnya</a>
       </div>
       <img src="images/Icon-1-1.png" loading="lazy" width="434" id="w-node-c65386d2-1820-5e59-acae-5146469a85d4-c1ab8edd" alt=""/>
     </div>
@@ -110,7 +110,7 @@
           <div class="text-block-2">This is some text inside of a div block.</div>
           <div id="w-node-e594e6e5-c7fd-444f-ec70-3951752132ab-c1ab8edd" class="text-block-2">This is some text inside of a div block.</div>
         </div>
-        <a href="berita-dan-galeri.html" class="button-3 w-button">Selengkapnya</a>
+        <a href="berita-dan-galeri" class="button-3 w-button">Selengkapnya</a>
       </div>
     </div>
   </section>
