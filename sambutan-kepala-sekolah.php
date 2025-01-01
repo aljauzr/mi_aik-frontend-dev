@@ -10,7 +10,7 @@
   <!-- NAVBAR -->
   <?php include 'inc/navbar.php'; ?>
   <!-- END OF NAVBAR -->
-  <section class="section-12" style="padding-top: 60px;">
+  <section class="section-12" style="padding-top: 130px;">
     <div class="w-layout-blockcontainer container w-container">
       <div class="w-layout-grid grid-6"><img src="images/Group-27.png" loading="lazy" width="400" height="Auto" alt="" srcset="images/Group-27-p-500.png 500w, images/Group-27.png 608w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 63vw, 400px" id="w-node-fbf741bc-4735-663b-76b8-1fab62bb30bd-c1ab8f27">
         <div id="w-node-_824eb1f6-751c-ebc9-0587-cdafc5fd68f8-c1ab8f27">
