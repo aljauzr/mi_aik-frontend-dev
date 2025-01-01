@@ -45,7 +45,7 @@
               : guru.nama;
 
             guruElement.innerHTML = `
-              <img src="${guru.gambar ? `${backend_url}${guru.gambar}` : `${backend_url}images/defaultStaff.jpg`}"  loading="lazy" alt="${guru.nama}" class="image-13" width="140" height="140">
+              <img src="${guru.gambar ? `${backend_url}${guru.gambar}` : `${backend_url}images/defaultStaff.jpg`}"  loading="lazy" alt="${guru.nama}" class="image-13" width="347">
               <div class="text-block-22">${namaGuru}</div>
               <div class="text-block-23">${guru.jabatan}</div>
             `;
