@@ -86,11 +86,16 @@
           imgElement.height = 373.33;
           imgElement.alt = '';
           imgElement.classList.add('image-12');
+
+          // Batasi nama berita hingga 34 karakter
+            const namaBerita = item.nama.length > 34
+              ? item.nama.substring(0, 34) + "..." 
+              : item.nama;
           
           // Membuat elemen text
           const textBlock = document.createElement('div');
           textBlock.classList.add('text-block-19');
-          textBlock.textContent = item.nama;
+          textBlock.textContent = namaBerita;
 
           // Membuat tombol "Selengkapnya"
           const button = document.createElement('a');
